@@ -9,6 +9,10 @@ Kubernetes YAML configurations for deploying and managing containerized applicat
 │ └── replicaset.yaml
 ├── deployments/
 │ └── deployment.yaml
+├── services/
+│ ├── clusterip-service.yaml
+│ ├── nodeport-service.yaml
+│ └── loadbalancer-service.yaml
 └── README.md
 
 ## Usage
@@ -26,15 +30,16 @@ bash
 kubectl apply -f deployments/deployment.yaml
 kubectl get deployments
 kubectl rollout status deployment/nginx-deployment
-Scaling
+Services
 bash
-kubectl scale deployment/nginx-deployment --replicas=5
-Rollback
+kubectl apply -f services/
+kubectl get services
+Access NodePort
 bash
-kubectl rollout undo deployment/nginx-deployment
+minikube service nginx-nodeport --url
 
 Author
-Sagar 
+Sagar
 
 License
 MIT License - feel free to use and modify.
